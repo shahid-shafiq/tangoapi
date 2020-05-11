@@ -1,0 +1,18 @@
+openapi: 3.0.0
+info:
+  title: TangoAPI
+  version: '1.0'
+  description: |-
+    Tango API specification based on Tango 4.00.5.
+    The API describes how to obtain authentication ticket and use it in the subsequent calls. The project list and preview request can be used through this API.
+  contact:
+    name: Shahid Shafiq
+    email: shahid_shafiq@elixir.com
+  license:
+    name: Tango API License
+servers:
+  - url: 'http://localhost:3000'
+paths: {}
+components:
+  schemas: {}
+  securitySchemes: {}
