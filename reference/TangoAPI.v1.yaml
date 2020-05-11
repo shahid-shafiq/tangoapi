@@ -11,8 +11,75 @@ info:
   license:
     name: Tango API License
 servers:
-  - url: 'http://localhost:3000'
-paths: {}
+  - url: 'http://localhost:3000/tango/api'
+paths:
+  /tickets:
+    parameters: []
+    post:
+      summary: Get authentication ticket
+      operationId: post-tickets
+      responses:
+        '201':
+          description: Created
+          content:
+            application/xml-dtd:
+              schema:
+                type: object
+                properties:
+                  ticket:
+                    type: string
+                    format: byte
+                required:
+                  - ticket
+        '401':
+          description: Unauthorized
+          content:
+            text/html:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+          headers: {}
+      tags:
+        - Authentication
+      description: Before accessign any resources from Tango API an authentication ticket is required. The ticket is issued only to authorized users.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                usernamed:
+                  type: string
+                  description: Authorized username
+                password:
+                  type: string
+                  description: Password for the authorized user
+              required:
+                - usernamed
+                - password
+            examples: {}
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Authorized username
+                password:
+                  type: string
+                  description: Password for the username
+              required:
+                - username
+                - password
+        description: The user information is provided in the body.
+      parameters: []
 components:
   schemas: {}
   securitySchemes: {}
