@@ -51,21 +51,7 @@ paths:
       description: Before accessign any resources from Tango API an authentication ticket is required. The ticket is issued only to authorized users.
       requestBody:
         content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                usernamed:
-                  type: string
-                  description: Authorized username
-                password:
-                  type: string
-                  description: Password for the authorized user
-              required:
-                - usernamed
-                - password
-            examples: {}
-          multipart/form-data:
+          application/x-www-form-urlencoded:
             schema:
               type: object
               properties:
@@ -78,6 +64,7 @@ paths:
               required:
                 - username
                 - password
+            examples: {}
         description: The user information is provided in the body.
       parameters: []
 components:
