@@ -67,6 +67,91 @@ paths:
             examples: {}
         description: The user information is provided in the body.
       parameters: []
+  /tickets/site/id:
+    get:
+      summary: Obtain SiteID of the site
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+      operationId: get-tickets-site-id
+      description: Some API require numeric siteid. This API returns that numeric ID against a given site name.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: tango-ticket
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: siteName
+          required: true
+  /projects:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: number
+                  list:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        appName:
+                          type: string
+                        clientApp:
+                          type: string
+                        companyId:
+                          type: string
+                        createDate:
+                          type: string
+                        description:
+                          type: string
+                        groupId:
+                          type: string
+                        id:
+                          type: string
+                        modifiedDate:
+                          type: string
+                        name:
+                          type: string
+                        path:
+                          type: string
+                        repoPath:
+                          type: string
+                        userName:
+                          type: string
+        '401':
+          description: Unauthorized
+      operationId: get-projects
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: tango-ticket
+        - schema:
+            type: string
+          in: query
+          name: client-app
+        - schema:
+            type: string
+          in: query
+          name: site-id
+        - schema:
+            type: string
+          in: query
+          name: tenant-id
 components:
   schemas: {}
   securitySchemes: {}
